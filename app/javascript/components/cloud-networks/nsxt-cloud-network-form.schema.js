@@ -26,37 +26,15 @@ const subnet_mask_options = [
     value: '/29',
   }
 ];
-const security_zone_options = [
-  {
-    label: 'PURPLE',
-    value: 'PURPLE',
-  },
-  {
-    label: 'GREEN',
-    value: 'GREEN',
-  },
-  {
-    label: 'ORANGE',
-    value: 'ORANGE',
-  },
-  {
-    label: 'RED_PRIVATE',
-    value: 'RED_PRIVATE',
-  },
-  {
-    label: 'RED_PUBLIC',
-    value: 'RED_PUBLIC',
-  }
-];
 
-const loadProviders = () => API.get("/api/providers?collection_class=ManageIQ::Providers::Nsxt::NetworkManager").then(({ resources }) =>
+const loadProviders = () => API.get("/api/providers?collection_class=ManageIQ::Providers::Nsxt::NetworkManager&expand=resources&attributes=id,name").then(({ resources }) =>
   resources.map(({ id: value, name: label }) => ({ label, value }))
 );
 
 export default (edit) => {
   const schema = {
     fields: [
-      {...(edit ? {} : {
+      {
         component: componentTypes.SELECT,
         id: 'ems_id',
         name: 'ems_id',
@@ -64,7 +42,8 @@ export default (edit) => {
         isRequired: true,
         loadOptions: loadProviders,
         validate: [{ type: validatorTypes.REQUIRED }],
-      })},
+        hideField: edit
+      },
       {
         component: componentTypes.TEXT_FIELD,
         id: 'name',
@@ -94,27 +73,14 @@ export default (edit) => {
         validate: [
           {
             type: validatorTypes.REQUIRED,
-            message: __('CIDR Subnet Mask is required'),
+            message: __('CIDR Subnet Mask is required'),   
           },
         ],
         options: subnet_mask_options,
-      },
-      {
-        component: componentTypes.SELECT,
-        id: 'security_zone',
-        name: 'security_zone',
-        label: __('Security Zone'),
-        placeholder: __('Security Zone of the Cloud Network'),
-        isRequired: true,
-        validate: [
-          {
-            type: validatorTypes.REQUIRED,
-            message: __('Security Zone is required'),
-          },
-        ],
-        options: security_zone_options,
+        hideField: edit
       }
-    ],
+    ]
   }
   return schema;
 };
+ 

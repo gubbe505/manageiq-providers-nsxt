@@ -1,4 +1,4 @@
-import NsxtCloudNetworkForm from '../components/cloud-networks/create-nsxt-cloud-network-form';
+import NsxtCloudNetworkForm from '../components/cloud-networks/nsxt-cloud-network-form';
 import DeleteNsxtCloudNetworkForm from '../components/cloud-networks/delete-nsxt-cloud-network-form';
 import CreateNsxtSecurityGroupForm from '../components/security-groups/create-nsxt-security-group-form';
 import DeleteNsxtSecurityGroupForm from '../components/security-groups/delete-nsxt-security-group-form';

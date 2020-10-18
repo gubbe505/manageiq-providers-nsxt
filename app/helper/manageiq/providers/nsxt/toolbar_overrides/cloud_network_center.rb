@@ -17,11 +17,12 @@ module ManageIQ
                     'pficon pficon-edit fa-lg',
                     t = N_('Edit Cloud Network'),
                     t,
-                    :data  => {'function'      => 'sendDataWithRx',
-                               'function-data' => {:controller     => 'provider_dialogs',
-                                                   :button         => :nsxt_update_cloud_network,
-                                                   :modal_title    => N_('Update Cloud Network'),
-                                                   :component_name => 'UpdateNsxtCloudNetworkForm'}},
+                    :data  => {
+                      'function'      => 'sendDataWithRx',
+                      'function-data' => {:controller     => 'provider_dialogs',
+                                          :button         => :nsxt_update_cloud_network,
+                                          :modal_title    => N_('Update Cloud Network'),
+                                          :component_name => 'NsxtCloudNetworkForm'}},
                     :klass => ApplicationHelper::Button::Basic
                   ),
                   button(
@@ -29,11 +30,12 @@ module ManageIQ
                     'pficon pficon-delete fa-lg',
                     t = N_('Remove Cloud Network'),
                     t,
-                    :data  => {'function'      => 'sendDataWithRx',
-                               'function-data' => {:controller     => 'provider_dialogs',
-                                                   :button         => :nsxt_delete_cloud_network,
-                                                   :modal_title    => N_('Remove Cloud Network'),
-                                                   :component_name => 'DeleteNsxtCloudNetworkForm'}},
+                    :data  => {
+                      'function'      => 'sendDataWithRx',
+                      'function-data' => {:controller     => 'provider_dialogs',
+                                          :button         => :nsxt_delete_cloud_network,
+                                          :modal_title    => N_('Remove Cloud Network'),
+                                          :component_name => 'DeleteNsxtCloudNetworkForm'}},
                     :klass => ApplicationHelper::Button::Basic
                   ),
                 ]
