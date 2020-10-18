@@ -54,7 +54,7 @@ class ManageIQ::Providers::Nsxt::Inventory::Parser::NetworkManager < ManageIQ::P
       cloud_network.cloud_tenant = cloud_tenant(segment['tags'])
       cloud_network.status = 'active'
       cloud_network.enabled = true
-      cloud_network.extra_attributes = { :security_zone => get_tag_value_by_scope(segment['tags'], 'network_zone') }
+      cloud_network.extra_attributes = { :subnet_mask => get_tag_value_by_scope(segment['tags'], 'subnet_mask') }
       cloud_subnets(segment)
     end
   end

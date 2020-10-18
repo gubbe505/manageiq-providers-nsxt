@@ -12,7 +12,6 @@ const NsxtCloudNetworkForm = ({ recordId }) => {
   useEffect(() => {
     if (!!recordId && ManageIQ.controller === 'cloud_network') {
       API.get(`/api/cloud_networks/${recordId}?attributes=name,description`).then(({ id, providerId, ...initialValues }) => {
-        delete initialValues.href;
         setState({
           isLoading: false,
           initialValues,
